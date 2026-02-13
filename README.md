@@ -1,34 +1,40 @@
 # Grokking Live (Tiny Transformer)
 
-This script trains a tiny transformer on modular addition and logs live metrics + weight snapshots.
+Sorry about the messy instructions earlier — this is the clean setup.
 
-## 1) Install deps
-```bash
-pip install torch tensorboard
-```
+## Recommended: Jupyter notebook (local, no hosted site)
 
-## 2) Run training
 ```bash
 cd "/Users/syed/Desktop/grokking testing and erfect"
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install notebook ipykernel torch matplotlib
+python -m notebook
+```
+
+Open:
+- `grokking_live_notebook.ipynb`
+
+---
+
+## Optional: script mode (terminal logs)
+
+```bash
+cd "/Users/syed/Desktop/grokking testing and erfect"
+source .venv/bin/activate
 python grokking_live.py
 ```
 
-## 3) View live charts (loss/acc/weight-l2 + weight image)
-In a second terminal:
-```bash
-cd "/Users/syed/Desktop/grokking testing and erfect"
-tensorboard --logdir runs/grokking_live
-```
-Then open: http://localhost:6006
+---
 
-## What to watch
-- Train accuracy can go high earlier.
-- Test accuracy may stay low for long time, then jump (grokking-like behavior).
-- Weight L2 and weight image evolution help you "see" parameters changing.
+## What to expect
+- Train accuracy can hit high values early.
+- Test accuracy may stay low for a while.
+- Later, test accuracy can jump (grokking-like behavior).
 
-## If grokking does not appear immediately
-Try:
-- Increase `steps` (e.g., 50k+)
-- Keep `train_frac` low (0.2-0.4)
+## If jump is not obvious
+- Increase steps (`50k+`)
+- Keep `train_frac` around `0.2–0.4`
 - Keep non-zero `weight_decay`
-- Reduce model size slightly
+- Try smaller model (`d_model=64`)
