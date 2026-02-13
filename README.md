@@ -12,6 +12,9 @@ Minimal experiment to observe **grokking-like behavior** in a tiny Transformer o
 - `grokking_live.py` — script version
 - `EXPERIMENTATION.md` — design + rationale
 
+## Live run snapshot
+![Grokking live notebook output](assets/grokking-live-plot.png)
+
 ## Reference
 Power et al., **Grokking: Generalization Beyond Overfitting on Small Algorithmic Datasets**  
 https://arxiv.org/abs/2201.02177
